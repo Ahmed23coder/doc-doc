@@ -1,14 +1,15 @@
+import 'package:docdoc/core/utils/colors_manager.dart';
+import 'package:docdoc/core/utils/text_style_manager.dart';
+import 'package:docdoc/features/auth/logic/auth_state.dart';
+import 'package:docdoc/features/auth/logic/signup_bloc.dart';
+import 'package:docdoc/features/auth/logic/signup_event.dart';
 import 'package:docdoc/features/auth/presentation/widgets/social_icon_row.dart';
+import 'package:docdoc/models/validation_error_model.dart';
+import 'package:docdoc/presentation/widgets/shared/button_widget.dart' show ButtonWidget, ButtonType;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/utils/colors_manager.dart';
-import '../../../../core/utils/text_style_manager.dart';
-import '../../../../presentation/widgets/shared/button_widget.dart';
-import '../../../../presentation/widgets/shared/form_widget.dart';
-import '../../logic/auth_state.dart';
-import '../../logic/signup_bloc.dart';
-import '../../logic/signup_event.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

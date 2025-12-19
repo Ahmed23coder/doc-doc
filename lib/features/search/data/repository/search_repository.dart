@@ -2,8 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:docdoc/core/api/dio_factory.dart';
 import 'package:docdoc/core/constants/end_points.dart';
 import 'package:docdoc/models/doctor_filter_model.dart';
-import '../../../../models/doctor_model.dart';
-import '../../../../models/specialization_model.dart';
+import 'package:docdoc/models/doctor_model.dart';
+import 'package:docdoc/models/specialization_model.dart';
+
+
 class SearchRepository {
   final Dio _dio = DioFactory.getDio();
 

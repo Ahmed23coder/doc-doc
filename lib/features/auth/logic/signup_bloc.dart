@@ -1,7 +1,6 @@
 import 'package:docdoc/features/auth/data/repository/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:docdoc/core/services/secure_storage_service.dart';
-import '../../../models/auth_model.dart';
 import 'auth_state.dart';
 import 'signup_event.dart';
 
@@ -41,7 +40,7 @@ class SignupBloc extends Bloc<SignupEvent, AuthState> {
         username: authModel.data.username,
       );
 
-      emit(AuthSuccess(authModel as AuthModel));
+      emit(AuthSuccess(authModel));
     } catch (e) {
       emit(AuthError(e.toString()));
     }

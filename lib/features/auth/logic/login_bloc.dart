@@ -1,8 +1,9 @@
+import 'package:docdoc/features/auth/data/repository/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:docdoc/features/auth/logic/auth_state.dart';
 import 'package:docdoc/features/auth/logic/login_event.dart';
 import 'package:docdoc/core/services/secure_storage_service.dart';
-import '../data/repository/auth_repository.dart';
+
 
 class LoginBloc extends Bloc<LoginEvent, AuthState> {
   final AuthRepository _authRepository;

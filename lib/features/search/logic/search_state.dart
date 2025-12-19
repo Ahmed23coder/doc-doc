@@ -1,6 +1,6 @@
+import 'package:docdoc/models/doctor_model.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../models/doctor_model.dart';
 
 abstract class SearchState extends Equatable {
   const SearchState();

@@ -1,6 +1,6 @@
+import 'package:docdoc/models/doctor_filter_model.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../models/doctor_filter_model.dart';
 
 abstract class SearchEvent extends Equatable{
   const SearchEvent();

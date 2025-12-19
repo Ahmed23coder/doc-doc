@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:docdoc/core/api/dio_factory.dart';
+import 'package:docdoc/core/constants/end_points.dart';
 import 'package:docdoc/models/auth_model.dart';
-import '../../../../core/api/dio_factory.dart';
-import '../../../../core/constants/end_points.dart';
+
 
 class AuthRepository {
   final Dio dio =  DioFactory.getDio();

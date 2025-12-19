@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:docdoc/core/utils/colors_manager.dart';
 import 'package:docdoc/core/utils/text_style_manager.dart';
 import 'package:docdoc/features/auth/logic/login_bloc.dart';

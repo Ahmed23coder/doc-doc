@@ -11,7 +11,6 @@ import 'package:docdoc/features/home/data/repository/home_repository.dart';
 import 'package:docdoc/features/home/logic/home_bloc.dart';
 import 'package:docdoc/features/profile/data/repository/profile_repository.dart';
 import 'package:docdoc/features/profile/logic/profile_bloc.dart';
-
 import 'core/layout/main_layout.dart';
 
 void main() {

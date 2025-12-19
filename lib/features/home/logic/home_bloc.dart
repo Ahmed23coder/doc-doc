@@ -1,9 +1,8 @@
+import 'package:docdoc/features/home/data/repository/home_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:docdoc/features/home/logic/home_state.dart';
 import 'package:docdoc/features/home/logic/home_event.dart';
 import 'package:docdoc/core/services/secure_storage_service.dart';
-
-import '../data/repository/home_repository.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository _homeRepository;

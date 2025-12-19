@@ -1,4 +1,4 @@
-import 'package:docdoc/core/layout/navigation_cubit.dart'; // Ensure this path is correct based on where you put the file
+import 'package:docdoc/core/layout/navigation_cubit.dart';
 import 'package:docdoc/features/home/presentation/screens/home_screen.dart';
 import 'package:docdoc/features/profile/presentation/profile_screen.dart';
 import 'package:docdoc/features/search/presentation/screens/search_screen.dart';

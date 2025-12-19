@@ -1,5 +1,4 @@
 import 'package:docdoc/core/utils/colors_manager.dart';
-import 'package:docdoc/features/auth/presentation/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {

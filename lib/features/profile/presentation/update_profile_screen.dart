@@ -4,10 +4,10 @@ import 'package:docdoc/features/profile/logic/profile_bloc.dart';
 import 'package:docdoc/features/profile/logic/profile_event.dart';
 import 'package:docdoc/features/profile/logic/profile_state.dart';
 import 'package:docdoc/models/user_profile_model.dart';
+import 'package:docdoc/models/validation_error_model.dart';
 import 'package:docdoc/presentation/widgets/shared/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../models/validation_error_model.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({super.key});

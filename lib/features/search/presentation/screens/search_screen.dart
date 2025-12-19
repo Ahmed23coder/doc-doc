@@ -1,3 +1,4 @@
+import 'package:docdoc/features/search/presentation/widget/search_doctors_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:docdoc/core/utils/colors_manager.dart';
@@ -9,7 +10,7 @@ import 'package:docdoc/features/search/logic/search_state.dart';
 import 'package:docdoc/models/doctor_filter_model.dart';
 import 'package:docdoc/models/specialization_model.dart';
 import 'package:docdoc/presentation/widgets/shared/button_widget.dart';
-import '../widget/search_doctors_list_widget.dart';
+
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});

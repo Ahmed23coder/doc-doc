@@ -1,7 +1,7 @@
+import 'package:docdoc/core/utils/text_style_manager.dart';
 import 'package:docdoc/features/home/presentation/screens/doctor_details_screen.dart';
 import 'package:docdoc/models/doctor_model.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/utils/text_style_manager.dart';
 
 
 class SearchDoctorsListWidget extends StatelessWidget {

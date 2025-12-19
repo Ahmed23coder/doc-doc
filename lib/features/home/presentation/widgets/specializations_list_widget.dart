@@ -1,7 +1,7 @@
+import 'package:docdoc/core/utils/colors_manager.dart';
 import 'package:docdoc/core/utils/text_style_manager.dart';
 import 'package:docdoc/models/home_response_model.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/utils/colors_manager.dart';
 
 class SpecializationsListWidget extends StatelessWidget {
   final List<SpecializationData> specializations;
