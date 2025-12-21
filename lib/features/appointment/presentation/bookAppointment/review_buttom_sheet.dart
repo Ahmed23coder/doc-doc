@@ -24,7 +24,6 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
         left: size.width * 0.05,
         right: size.width * 0.05,
         top: 20,
-        // Adjust padding for keyboard
         bottom: MediaQuery.of(context).viewInsets.bottom + 20,
       ),
       decoration: const BoxDecoration(
@@ -37,7 +36,6 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Drag Handle
           Container(
             width: 40,
             height: 4,
@@ -54,7 +52,6 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
           ),
           SizedBox(height: size.height * 0.03),
 
-          // Star Rating
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(5, (index) {
@@ -79,7 +76,6 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
           ),
           SizedBox(height: size.height * 0.02),
 
-          // Review Text Field
           Container(
             height: 120,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -99,14 +95,12 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
 
           SizedBox(height: size.height * 0.03),
 
-          // Done Button
           ButtonWidget(
             text: "Done",
             size: ButtonSize.large,
             width: double.infinity,
             type: ButtonType.primary,
             onTap: () {
-              // Navigate to Home
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => const MainLayout()),

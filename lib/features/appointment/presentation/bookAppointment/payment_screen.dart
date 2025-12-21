@@ -92,7 +92,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
               width: double.infinity,
               type: ButtonType.primary,
               onTap: () {
-                // PASS EVERYTHING TO SUMMARY
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -112,7 +111,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
     );
   }
 
-  // ... (Same helpers as before: _buildStepIndicator, _stepItem, _buildPaymentOptionItem)
   Widget _buildStepIndicator(Size size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

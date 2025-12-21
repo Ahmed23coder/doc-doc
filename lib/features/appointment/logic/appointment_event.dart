@@ -2,6 +2,7 @@ abstract class AppointmentsEvent {}
 
 class GetAppointmentsEvent extends AppointmentsEvent {}
 
+
 class BookAppointmentEvent extends AppointmentsEvent {
   final int doctorId;
   final String startTime;

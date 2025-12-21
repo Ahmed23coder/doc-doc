@@ -32,7 +32,6 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
   Widget build(BuildContext context) {
     final allAppointments = AppointmentsStore.appointments;
     return BlocProvider(
-      // 1. Trigger Fetch Event
       create: (context) =>
           AppointmentsBloc(AppointmentRepository())
             ..add(GetAppointmentsEvent()),
@@ -76,7 +75,6 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
           ),
         ),
 
-        // 2. State Management
         body: BlocBuilder<AppointmentsBloc, AppointmentsState>(
           builder: (context, state) {
             if (state is AppointmentsLoading) {
@@ -99,15 +97,14 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
                 ),
               );
             } else if (state is AppointmentsLoaded) {
-              // 3. Pass Fetched List
-              // Assuming API returns lowercase status strings: "upcoming", "completed", "cancelled"
+
               return TabBarView(
                 controller: _tabController,
                 children: [
                   _buildList(
                     allAppointments,
                     "upcoming",
-                  ), // or boolean check if your API uses bool
+                  ),
                   _buildList(allAppointments, "completed"),
                   _buildList(allAppointments, "cancelled"),
                 ],
@@ -123,8 +120,7 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
   }
 
   Widget _buildList(List<AppointmentData> allList, String status) {
-    // NOTE: Adjust this filter based on exactly what your API returns for 'status'
-    // Example: If API returns 0/1, change this logic. Assuming string for now.
+
     final filtered = allList
         .where((e) => (e.status.toLowerCase()) == status)
         .toList();
@@ -168,14 +164,12 @@ class AppointmentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Map your Model fields here
     final status = appointment.status
-        .toLowerCase(); // "upcoming", "completed", etc
+        .toLowerCase();
     final doctor = appointment.doctor;
-    final time = appointment.appointmentTime; // e.g., "10:00 AM" or ISO string
+    final time = appointment.appointmentTime;
 
-    // You might need to format date/time if it comes as raw ISO string
-    // For now assuming it is display-ready string based on your model snippet.
+
 
     return Container(
       padding: const EdgeInsets.all(12),
@@ -193,7 +187,6 @@ class AppointmentCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // --- STATUS LABEL (If not upcoming) ---
           if (status != "upcoming") ...[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -216,7 +209,6 @@ class AppointmentCard extends StatelessWidget {
             const SizedBox(height: 12),
           ],
 
-          // --- DOCTOR INFO ---
           Row(
             children: [
               Container(
@@ -225,12 +217,11 @@ class AppointmentCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   image: DecorationImage(
-                    // Handle null or invalid URL
                     image: NetworkImage(
                       doctor?.photo ?? "https://via.placeholder.com/150",
                     ),
                     fit: BoxFit.cover,
-                    onError: (e, s) => const Icon(Icons.person), // Fallback
+                    onError: (e, s) => const Icon(Icons.person),
                   ),
                   color: GrayColor.grey20,
                 ),
@@ -258,7 +249,6 @@ class AppointmentCard extends StatelessWidget {
                   ],
                 ),
               ),
-              // Chat Bubble (Only Upcoming)
               if (status == "upcoming")
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -279,7 +269,6 @@ class AppointmentCard extends StatelessWidget {
           Divider(color: GrayColor.grey20, height: 1),
           const SizedBox(height: 12),
 
-          // --- DATE & TIME ---
           Row(
             children: [
               const Icon(
@@ -288,7 +277,6 @@ class AppointmentCard extends StatelessWidget {
                 color: GrayColor.grey60,
               ),
               const SizedBox(width: 6),
-              // Using appointmentTime. If you have separate Date field, combine them here.
               Text(
                 time,
                 style: TextStyleManager.interMedium12.copyWith(
@@ -307,26 +295,24 @@ class AppointmentCard extends StatelessWidget {
             ],
           ),
 
-          // --- ACTION BUTTONS (Upcoming Only) ---
           if (status == "upcoming") ...[
             const SizedBox(height: 16),
             Row(
               children: [
-                Expanded(
-                  child: ButtonWidget(
-                    text: "Cancel Appointment",
-                    type: ButtonType.secondary, // Outline
-                    size: ButtonSize.small,
-                    onTap: () {
-                      // Add Cancel Event logic here
-                    },
-                  ),
-                ),
+                // Expanded(
+                //   child: ButtonWidget(
+                //     text: "Cancel Appointment",
+                //     type: ButtonType.secondary,
+                //     size: ButtonSize.small,
+                //     onTap: () {
+                //     },
+                //   ),
+                // ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: ButtonWidget(
                     text: "Reschedule",
-                    type: ButtonType.primary, // Blue Filled
+                    type: ButtonType.primary,
                     size: ButtonSize.small,
                     onTap: () {
                       Navigator.push(

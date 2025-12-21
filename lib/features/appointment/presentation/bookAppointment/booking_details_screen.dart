@@ -22,14 +22,13 @@ class BookingDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // Format: "Wednesday, 08 May 2023" (Using simple string interpolation for now)
     final dateString =
         "${bookingDate.day}/${bookingDate.month}/${bookingDate.year}";
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Details"), // Matches screenshot "Details"
+        title: const Text("Details"),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -52,12 +51,11 @@ class BookingDetailsScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: size.height * 0.02),
 
-                    // --- SUCCESS ICON ---
                     Container(
                       width: 80,
                       height: 80,
                       decoration: const BoxDecoration(
-                        color: Secondary.fillGreen, // Green color
+                        color: Secondary.fillGreen,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -68,7 +66,6 @@ class BookingDetailsScreen extends StatelessWidget {
                     ),
                     SizedBox(height: size.height * 0.02),
 
-                    // --- TITLE ---
                     Text(
                       "Booking Confirmed",
                       style: TextStyleManager.interBold20.copyWith(
@@ -86,7 +83,6 @@ class BookingDetailsScreen extends StatelessWidget {
 
                     SizedBox(height: size.height * 0.04),
 
-                    // --- BOOKING INFO ---
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -98,7 +94,6 @@ class BookingDetailsScreen extends StatelessWidget {
                     ),
                     SizedBox(height: size.height * 0.02),
 
-                    // Date & Time
                     _buildInfoCard(
                       icon: Icons.calendar_month,
                       iconBg: Secondary.surfaceBlue,
@@ -109,7 +104,6 @@ class BookingDetailsScreen extends StatelessWidget {
                     ),
                     SizedBox(height: size.height * 0.02),
 
-                    // Appointment Type
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -137,7 +131,6 @@ class BookingDetailsScreen extends StatelessWidget {
                     Divider(color: GrayColor.grey20, thickness: 1),
                     SizedBox(height: size.height * 0.02),
 
-                    // --- DOCTOR INFO ---
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -154,7 +147,6 @@ class BookingDetailsScreen extends StatelessWidget {
               ),
             ),
 
-            // --- DONE BUTTON ---
             Padding(
               padding: EdgeInsets.all(size.width * 0.05),
               child: ButtonWidget(
@@ -163,7 +155,6 @@ class BookingDetailsScreen extends StatelessWidget {
                 width: double.infinity,
                 type: ButtonType.primary,
                 onTap: () {
-                  // Show Review Bottom Sheet
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
@@ -179,7 +170,6 @@ class BookingDetailsScreen extends StatelessWidget {
     );
   }
 
-  // --- HELPER WIDGETS ---
   Widget _buildInfoCard({
     required IconData icon,
     required Color iconBg,

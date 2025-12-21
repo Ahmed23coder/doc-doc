@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class RescheduleDetailsScreen extends StatelessWidget {
-  // All fields are now dynamic variables
   final String doctorName;
   final String doctorSpecialty;
   final String doctorLocation;
-  final String doctorImage; // <--- Added Image
+  final String doctorImage;
   final DateTime newDate;
   final String newTime;
   final String appointmentType;
@@ -24,7 +23,6 @@ class RescheduleDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Format date: "Wednesday, 08 May 2023"
     final String formattedDate = DateFormat(
       'EEEE, dd MMM yyyy',
     ).format(newDate);
@@ -50,7 +48,6 @@ class RescheduleDetailsScreen extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 30),
-              // Success Icon
               Container(
                 height: 80,
                 width: 80,
@@ -69,7 +66,6 @@ class RescheduleDetailsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 40),
 
-              // --- Booking Info ---
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -79,7 +75,6 @@ class RescheduleDetailsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-              // Date & Time
               _buildInfoRow(
                 Icons.calendar_today_outlined,
                 Colors.blue,
@@ -89,7 +84,6 @@ class RescheduleDetailsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-              // Appointment Type
               Row(
                 children: [
                   Container(
@@ -142,7 +136,6 @@ class RescheduleDetailsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // --- Doctor Info ---
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -154,7 +147,6 @@ class RescheduleDetailsScreen extends StatelessWidget {
 
               Row(
                 children: [
-                  // Doctor Image (Dynamic)
                   Container(
                     width: 60,
                     height: 60,
@@ -164,10 +156,9 @@ class RescheduleDetailsScreen extends StatelessWidget {
                       image: DecorationImage(
                         image: NetworkImage(
                           doctorImage,
-                        ), // <--- Uses the real variable now
+                        ),
                         fit: BoxFit.cover,
                         onError: (exception, stackTrace) {
-                          // Handles errors if image link is broken
                         },
                       ),
                     ),
@@ -185,7 +176,7 @@ class RescheduleDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 4),
-                        // Specialty | Location
+
                         Text(
                           '$doctorSpecialty | $doctorLocation',
                           style: TextStyle(
@@ -205,7 +196,6 @@ class RescheduleDetailsScreen extends StatelessWidget {
               ),
               const Spacer(),
 
-              // Done Button
               SizedBox(
                 width: double.infinity,
                 height: 56,

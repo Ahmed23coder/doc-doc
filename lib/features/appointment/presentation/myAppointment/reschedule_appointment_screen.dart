@@ -1,7 +1,7 @@
-import 'package:docdoc/core/utils/colors_manager.dart'; //
-import 'package:docdoc/core/utils/text_style_manager.dart'; //
+import 'package:docdoc/core/utils/colors_manager.dart'; 
+import 'package:docdoc/core/utils/text_style_manager.dart'; 
 import 'package:docdoc/features/appointment/presentation/myAppointment/reschedule_detials_screen.dart';
-import 'package:docdoc/models/appointment_model.dart'; //
+import 'package:docdoc/models/appointment_model.dart'; 
 import 'package:docdoc/presentation/widgets/shared/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -18,7 +18,6 @@ class RescheduleAppointmentScreen extends StatefulWidget {
 
 class _RescheduleAppointmentScreenState
     extends State<RescheduleAppointmentScreen> {
-  // Initialize with some default values or parsed from current appointment if possible
   int _selectedDateIndex = 0;
   int _selectedTimeIndex = -1;
   int _selectedTypeIndex = 0;
@@ -59,14 +58,13 @@ class _RescheduleAppointmentScreenState
         ),
         titleTextStyle: TextStyleManager.interBold18.copyWith(
           color: Colors.black,
-        ), //
+        ), 
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(size.width * 0.05),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // --- SELECT DATE ---
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -75,16 +73,16 @@ class _RescheduleAppointmentScreenState
                   style: TextStyleManager.interBold16.copyWith(
                     color: GrayColor.grey100,
                   ),
-                ), //
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Set Manual",
-                    style: TextStyleManager.interMedium12.copyWith(
-                      color: PrimaryColor.primary100,
-                    ),
-                  ), //
-                ),
+                ), 
+                 TextButton(
+                   onPressed: () {},
+                   child: Text(
+                     "Set Manual",
+                     style: TextStyleManager.interMedium12.copyWith(
+                       color: PrimaryColor.primary100,
+                     ),
+                   ), 
+                 ),
               ],
             ),
             SizedBox(height: size.height * 0.01),
@@ -100,13 +98,12 @@ class _RescheduleAppointmentScreenState
 
             SizedBox(height: size.height * 0.03),
 
-            // --- AVAILABLE TIME ---
             Text(
               "Available Time",
               style: TextStyleManager.interBold16.copyWith(
                 color: GrayColor.grey100,
               ),
-            ), //
+            ), 
             SizedBox(height: size.height * 0.015),
             SizedBox(
               width: double.infinity,
@@ -123,13 +120,12 @@ class _RescheduleAppointmentScreenState
 
             SizedBox(height: size.height * 0.03),
 
-            // --- APPOINTMENT TYPE ---
             Text(
               "Appointment Type",
               style: TextStyleManager.interBold16.copyWith(
                 color: GrayColor.grey100,
               ),
-            ), //
+            ), 
             SizedBox(height: size.height * 0.015),
             ...List.generate(
               _appointmentTypes.length,
@@ -138,7 +134,6 @@ class _RescheduleAppointmentScreenState
 
             SizedBox(height: size.height * 0.04),
 
-            // --- RESCHEDULE BUTTON ---
             ButtonWidget(
               text: "Reschedule",
               size: ButtonSize.large,
@@ -152,25 +147,18 @@ class _RescheduleAppointmentScreenState
                   return;
                 }
 
-                // 1. Prepare New Data
                 final newDate = _dates[_selectedDateIndex];
                 final newTime = _times[_selectedTimeIndex];
 
-                // 2. UPDATE the store (Optional: if you want it to update in the list immediately)
-                // AppointmentsStore.updateAppointment(widget.appointment.id, newDate, newTime);
-
-                // 3. Navigate to Details Screen with REAL Data
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => RescheduleDetailsScreen(
-                      // Pass data from the current appointment object
                       doctorName: widget.appointment.doctor?.name ?? "Unknown",
                       doctorSpecialty: widget.appointment.doctor?.specialization?.name ?? "General",
                       doctorLocation: widget.appointment.doctor?.city?.name ?? "Hospital",
-                      doctorImage: widget.appointment.doctor?.photo ?? "https://via.placeholder.com/150",
+                      doctorImage: widget.appointment.doctor?.photo ?? "https:via.placeholder.com/150",
 
-                      // Pass new user selection
                       newDate: newDate,
                       newTime: newTime,
                       appointmentType: _appointmentTypes[_selectedTypeIndex]['title'],
@@ -185,7 +173,6 @@ class _RescheduleAppointmentScreenState
     );
   }
 
-  // --- HELPER WIDGETS ---
   Widget _buildDateCard(int index) {
     final date = _dates[index];
     final isSelected = _selectedDateIndex == index;
@@ -199,7 +186,7 @@ class _RescheduleAppointmentScreenState
         decoration: BoxDecoration(
           color: isSelected
               ? PrimaryColor.primary100
-              : Secondary.surfaceText, //
+              : Secondary.surfaceText, 
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isSelected ? PrimaryColor.primary100 : Secondary.surfaceText,
@@ -214,7 +201,7 @@ class _RescheduleAppointmentScreenState
                 fontSize: isSelected ? 11 : 9,
                 color: isSelected ? Colors.white : GrayColor.grey50,
               ),
-            ), //
+            ), 
             const SizedBox(height: 2),
             Text(
               date.day.toString().padLeft(2, '0'),
@@ -235,11 +222,11 @@ class _RescheduleAppointmentScreenState
     return GestureDetector(
       onTap: () => setState(() => _selectedTimeIndex = index),
       child: Container(
-        width: size.width * 0.4, // Approx half width
+        width: size.width * 0.4, 
         height: 40,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isSelected ? PrimaryColor.primary100 : Colors.white, //
+          color: isSelected ? PrimaryColor.primary100 : Colors.white, 
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isSelected ? PrimaryColor.primary100 : GrayColor.grey20,
@@ -274,7 +261,7 @@ class _RescheduleAppointmentScreenState
             Icon(
               type['icon'],
               color: isSelected ? PrimaryColor.primary100 : GrayColor.grey60,
-            ), //
+            ), 
             const SizedBox(width: 12),
             Expanded(
               child: Text(
@@ -283,7 +270,7 @@ class _RescheduleAppointmentScreenState
                   color: GrayColor.grey100,
                 ),
               ),
-            ), //
+            ), 
             if (isSelected)
               const Icon(
                 Icons.check_circle,

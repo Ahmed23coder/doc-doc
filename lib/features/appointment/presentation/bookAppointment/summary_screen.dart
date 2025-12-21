@@ -1,5 +1,3 @@
-// File: lib/features/summary/presentation/screens/summary_screen.dart
-
 import 'package:docdoc/core/utils/appointment_store.dart';
 import 'package:docdoc/core/utils/colors_manager.dart';
 import 'package:docdoc/core/utils/text_style_manager.dart';
@@ -186,21 +184,18 @@ class SummaryScreen extends StatelessWidget {
                     width: double.infinity,
                     type: ButtonType.primary,
                     onTap: () {
-                      // 1. Create the new appointment object
                       final newAppointment = AppointmentData(
-                        id: DateTime.now().millisecondsSinceEpoch, // Unique ID
+                        id: DateTime.now().millisecondsSinceEpoch,
                         doctor: doctor,
                         appointmentTime: bookingTime,
-                        appointmentEndTime: "11:00 AM", // You can calculate this if needed
-                        status: 'upcoming', // Default status
-                        appointmentPrice: 20, // Default price
+                        appointmentEndTime:
+                            "11:00 AM",
+                        status: 'upcoming',
+                        appointmentPrice: 20,
                       );
 
-                      // 2. SAVE IT to our store
-                      // Import the store file at the top: import 'package:docdoc/core/utils/appointments_store.dart';
                       AppointmentsStore.addAppointment(newAppointment);
 
-                      // 3. Navigate to Success Screen
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -223,7 +218,6 @@ class SummaryScreen extends StatelessWidget {
     );
   }
 
-  // --- WIDGET HELPERS ---
   Widget _sectionTitle(String title) => Text(
     title,
     style: TextStyleManager.interBold16.copyWith(color: GrayColor.grey100),

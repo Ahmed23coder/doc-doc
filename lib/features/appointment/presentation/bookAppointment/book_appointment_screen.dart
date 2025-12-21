@@ -1,4 +1,3 @@
-
 import 'package:docdoc/core/utils/text_style_manager.dart';
 import 'package:docdoc/features/appointment/data/repository/appointment_repository.dart';
 import 'package:docdoc/features/appointment/logic/appointment_bloc.dart';
@@ -6,14 +5,14 @@ import 'package:docdoc/features/appointment/logic/appointment_event.dart';
 import 'package:docdoc/features/appointment/logic/appointment_state.dart';
 import 'package:docdoc/features/appointment/presentation/bookAppointment/payment_screen.dart';
 import 'package:docdoc/presentation/widgets/shared/button_widget.dart';
-import 'package:docdoc/models/doctor_model.dart'; // Model Import
+import 'package:docdoc/models/doctor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:docdoc/core/utils/colors_manager.dart';
 
 class BookAppointmentScreen extends StatefulWidget {
-  final DoctorModel doctor; // CHANGED: Accept Object
+  final DoctorModel doctor;
 
   const BookAppointmentScreen({super.key, required this.doctor});
 
@@ -187,7 +186,6 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
     );
   }
 
-  // Helpers
   Widget _sectionTitle(String title) => Text(
     title,
     style: TextStyleManager.interBold16.copyWith(color: GrayColor.grey100),
@@ -421,14 +419,6 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
     return BlocListener<AppointmentsBloc, AppointmentsState>(
       listener: (context, state) {
         if (state is AppointmentBookingSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Booking Saved!"),
-              backgroundColor: Secondary.fillGreen,
-            ),
-          );
-
-          // --- NAVIGATION PASSING DATA ---
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -468,7 +458,6 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
                 );
                 return;
               }
-              // Just triggering event, real data pass happens in Listener
               final datePart = DateFormat(
                 'yyyy-MM-dd',
               ).format(_dates[_selectedDateIndex]);
