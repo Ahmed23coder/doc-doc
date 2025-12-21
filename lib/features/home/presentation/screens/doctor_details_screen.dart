@@ -1,6 +1,6 @@
 import 'package:docdoc/core/utils/colors_manager.dart';
 import 'package:docdoc/core/utils/text_style_manager.dart';
-import 'package:docdoc/features/appointment/presentation/book_appointment_screen.dart';
+import 'package:docdoc/features/appointment/presentation/bookAppointment/book_appointment_screen.dart';
 import 'package:docdoc/models/doctor_model.dart';
 import 'package:docdoc/presentation/widgets/shared/button_widget.dart';
 import 'package:flutter/material.dart';
@@ -35,9 +35,14 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_ios, size: 20),
+          icon: const Icon(Icons.arrow_back_ios, size: 20, color: Colors.black),
         ),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.more_horiz))],
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_horiz, color: Colors.black),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Column(
@@ -55,10 +60,9 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                     children: [
                       // Header
                       _buildDoctorHeader(size),
-                      SizedBox(height: size.height * 0.01),
-
                       SizedBox(height: size.height * 0.03),
 
+                      // Tabs
                       Container(
                         padding: const EdgeInsets.all(4),
                         decoration: const BoxDecoration(
@@ -85,11 +89,23 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                 ),
               ),
             ),
+
+            // --- BOOK APPOINTMENT BUTTON ---
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: ButtonWidget(text: "Book Appointment", onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const BookAppointmentScreen() ) );
-              }),
+              child: ButtonWidget(
+                text: "Book Appointment",
+                onTap: () {
+                  // NAVIGATE AND PASS DOCTOR
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          BookAppointmentScreen(doctor: widget.doctor),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
@@ -97,7 +113,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
     );
   }
 
-  // header section
+  // ... (Keep your existing helper widgets: _buildDoctorHeader, _buildTabButton, etc. unchanged)
   Widget _buildDoctorHeader(Size size) {
     return Row(
       children: [
@@ -107,9 +123,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             image: DecorationImage(
-              image: NetworkImage(
-                widget.doctor.photo,
-              ),
+              image: NetworkImage(widget.doctor.photo),
               fit: BoxFit.cover,
             ),
           ),
@@ -120,19 +134,19 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(widget.doctor.name, style: TextStyleManager.interSemiBold16),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 "${widget.doctor.specialization?.name ?? 'Specialist'} | ${widget.doctor.degree}",
                 style: TextStyleManager.interMedium12.copyWith(
                   color: GrayColor.grey60,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Row(
                 children: [
                   const Icon(Icons.star, color: Warning.warning100, size: 18),
                   const SizedBox(width: 4),
-                  Text("4.8", style: TextStyleManager.interMedium14),
+                  const Text("4.8", style: TextStyleManager.interMedium14),
                   const SizedBox(width: 4),
                   Text(
                     "(4,279 reviews)",
@@ -153,11 +167,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
     final isSelected = _selectedIndex == index;
     return Expanded(
       child: GestureDetector(
-        onTap: () {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+        onTap: () => setState(() => _selectedIndex = index),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
@@ -202,7 +212,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("About me", style: TextStyleManager.interSemiBold18),
+        const Text("About me", style: TextStyleManager.interSemiBold18),
         const SizedBox(height: 10),
         Text(
           widget.doctor.description.isNotEmpty
@@ -218,12 +228,12 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
   }
 
   Widget _buildLocationSection() {
+    // Keep your map logic
     final LatLng doctorLocation = LatLng(30.0444, 31.2357);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Practice Place", style: TextStyleManager.interSemiBold16),
+        const Text("Practice Place", style: TextStyleManager.interSemiBold16),
         const SizedBox(height: 10),
         Container(
           padding: const EdgeInsets.all(16),
@@ -252,7 +262,6 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
           ),
         ),
         const SizedBox(height: 10),
-
         Container(
           height: 200,
           width: double.infinity,
@@ -293,11 +302,6 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
             ),
           ),
         ),
-
-        const SizedBox(height: 16),
-
-
-
       ],
     );
   }
@@ -340,7 +344,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                 ],
               ),
             ],
-          ), // End of Header Row
+          ),
           const SizedBox(height: 6),
           Text(
             comment,
@@ -349,7 +353,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
             ),
           ),
         ],
-      ), // End of Column
-    ); // End of Container
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:docdoc/core/layout/navigation_cubit.dart';
+import 'package:docdoc/features/appointment/presentation/myAppointment/my_appointments_screens.dart';
 import 'package:docdoc/features/home/presentation/screens/home_screen.dart';
 import 'package:docdoc/features/profile/presentation/profile_screen.dart';
 import 'package:docdoc/features/search/presentation/screens/search_screen.dart';
@@ -14,7 +15,7 @@ class MainLayout extends StatelessWidget {
     HomeScreen(),
     Center(child: Text("Message")),
     SearchScreen(),
-    Center(child: Text("Appointments")),
+    MyAppointmentsScreen(),
     ProfileScreen(),
   ];
 
