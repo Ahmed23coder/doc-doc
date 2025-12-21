@@ -1,5 +1,6 @@
 import 'package:docdoc/core/utils/colors_manager.dart';
 import 'package:docdoc/core/utils/text_style_manager.dart';
+import 'package:docdoc/features/appointment/presentation/book_appointment_screen.dart';
 import 'package:docdoc/models/doctor_model.dart';
 import 'package:docdoc/presentation/widgets/shared/button_widget.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,9 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: ButtonWidget(text: "Book Appointment", onTap: () {}),
+              child: ButtonWidget(text: "Book Appointment", onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const BookAppointmentScreen() ) );
+              }),
             ),
           ],
         ),
