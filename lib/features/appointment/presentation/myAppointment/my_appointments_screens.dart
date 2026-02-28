@@ -84,29 +84,50 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
                 ),
               );
             } else if (state is AppointmentsError) {
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    state.message,
-                    style: TextStyleManager.interMedium14.copyWith(
-                      color: Secondary.fillRed,
+              return Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(8),
+                    color: Secondary.fillRed.withOpacity(0.1),
+                    child: Text(
+                      "Failed to fetch recent appointments. Showing local data.",
+                      style: TextStyleManager.interMedium12.copyWith(
+                        color: Secondary.fillRed,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
-                ),
+                  Expanded(
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        _buildList(allAppointments, "upcoming"),
+                        _buildList(allAppointments, "completed"),
+                        _buildList(allAppointments, "cancelled"),
+                      ],
+                    ),
+                  ),
+                ],
               );
             } else if (state is AppointmentsLoaded) {
+              final combinedAppointments = [
+                ...state.appointments,
+                ...allAppointments,
+              ];
+              // Remove duplicates if any (e.g. by ID)
+              final Map<int, AppointmentData> uniqueAppointments = {};
+              for (var appointment in combinedAppointments) {
+                uniqueAppointments[appointment.id] = appointment;
+              }
+              final finalAppointments = uniqueAppointments.values.toList();
 
               return TabBarView(
                 controller: _tabController,
                 children: [
-                  _buildList(
-                    allAppointments,
-                    "upcoming",
-                  ),
-                  _buildList(allAppointments, "completed"),
-                  _buildList(allAppointments, "cancelled"),
+                  _buildList(finalAppointments, "upcoming"),
+                  _buildList(finalAppointments, "completed"),
+                  _buildList(finalAppointments, "cancelled"),
                 ],
               );
             }
