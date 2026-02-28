@@ -6,6 +6,7 @@ import 'package:docdoc/models/appointment_model.dart';
 import 'package:docdoc/presentation/widgets/shared/button_widget.dart';
 import 'package:docdoc/models/doctor_model.dart';
 import 'package:flutter/material.dart';
+import 'package:docdoc/features/appointment/data/repository/appointment_repository.dart';
 import 'package:intl/intl.dart';
 
 class SummaryScreen extends StatelessWidget {
@@ -183,30 +184,41 @@ class SummaryScreen extends StatelessWidget {
                     size: ButtonSize.large,
                     width: double.infinity,
                     type: ButtonType.primary,
-                    onTap: () {
+                    onTap: () async {
                       final newAppointment = AppointmentData(
                         id: DateTime.now().millisecondsSinceEpoch,
                         doctor: doctor,
                         appointmentTime: bookingTime,
                         appointmentEndTime:
-                            "11:00 AM",
+                        "11:00 AM",
                         status: 'upcoming',
                         appointmentPrice: 20,
                       );
 
                       AppointmentsStore.addAppointment(newAppointment);
 
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BookingDetailsScreen(
-                            doctor: doctor,
-                            bookingDate: bookingDate,
-                            bookingTime: bookingTime,
-                            appointmentType: appointmentType,
+                      try {
+                        await AppointmentRepository().storeAppointment(
+                          doctorId: doctor.id,
+                          startTime: bookingTime,
+                        );
+                      } catch (e) {
+                        debugPrint('Error storing appointment: $e');
+                      }
+
+                      if (context.mounted) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BookingDetailsScreen(
+                              doctor: doctor,
+                              bookingDate: bookingDate,
+                              bookingTime: bookingTime,
+                              appointmentType: appointmentType,
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      }
                     },
                   ),
                 ],
@@ -239,8 +251,8 @@ class SummaryScreen extends StatelessWidget {
     Color circleColor = state == StepState.completed
         ? Secondary.fillGreen
         : (state == StepState.active
-              ? PrimaryColor.primary100
-              : GrayColor.grey20);
+        ? PrimaryColor.primary100
+        : GrayColor.grey20);
     Color textColor = state == StepState.completed || state == StepState.active
         ? Colors.white
         : GrayColor.grey50;

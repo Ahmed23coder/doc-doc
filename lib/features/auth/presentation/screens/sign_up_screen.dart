@@ -5,11 +5,11 @@ import 'package:docdoc/features/auth/logic/signup_bloc.dart';
 import 'package:docdoc/features/auth/logic/signup_event.dart';
 import 'package:docdoc/features/auth/presentation/widgets/social_icon_row.dart';
 import 'package:docdoc/models/validation_error_model.dart';
-import 'package:docdoc/presentation/widgets/shared/button_widget.dart' show ButtonWidget, ButtonType;
+import 'package:docdoc/presentation/widgets/shared/button_widget.dart'
+    show ButtonWidget, ButtonType;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -50,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 '/signIn',
-                    (route) => false,
+                (route) => false,
               );
             }
           },
@@ -77,8 +77,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(height: size.height * 0.015),
                         Text(
                           "Sign up now and start exploring all that our\n"
-                              " app has to offer. We're excited to welcome \n"
-                              "you to our community!",
+                          " app has to offer. We're excited to welcome \n"
+                          "you to our community!",
                           style: TextStyleManager.interRegular14.copyWith(
                             color: BackGround.body,
                           ),
@@ -112,18 +112,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           onTap: isLoading
                               ? null
                               : () {
-                            context.read<SignupBloc>().add(
-                              SignupButtonPressed(
-                                name: userNameController.text,
-                                email: emailController.text,
-                                phone: phoneController.text,
-                                gender: "0", // Default gender
-                                password: passwordController.text,
-                                passwordConfirmation:
-                                passwordController.text,
-                              ),
-                            );
-                          },
+                                  context.read<SignupBloc>().add(
+                                    SignupButtonPressed(
+                                      name: userNameController.text,
+                                      email: emailController.text,
+                                      phone: phoneController.text,
+                                      gender: "0", // Default gender
+                                      password: passwordController.text,
+                                      passwordConfirmation:
+                                          passwordController.text,
+                                    ),
+                                  );
+                                },
                         ),
                         SizedBox(height: size.height * 0.04),
                         Row(
@@ -170,9 +170,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   text: "Terms & Conditions ",
                                   style: TextStyleManager.interRegular12
                                       .copyWith(
-                                    color: GrayColor.grey100,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                        color: GrayColor.grey100,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
                                 TextSpan(
                                   text: "and ",
@@ -183,9 +183,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   text: "Privacy Policy.",
                                   style: TextStyleManager.interRegular12
                                       .copyWith(
-                                    color: GrayColor.grey100,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                        color: GrayColor.grey100,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
                               ],
                             ),
@@ -206,15 +206,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   text: "Sign In",
                                   style: TextStyleManager.interRegular11
                                       .copyWith(
-                                    color: PrimaryColor.primary100,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                        color: PrimaryColor.primary100,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       Navigator.pushNamedAndRemoveUntil(
                                         context,
                                         '/signIn',
-                                            (route) => false,
+                                        (route) => false,
                                       );
                                     },
                                 ),

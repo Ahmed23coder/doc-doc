@@ -57,6 +57,7 @@ class _SearchScreenState extends State<SearchScreen> {
             appBar: AppBar(
               backgroundColor: Colors.white,
               elevation: 0,
+              scrolledUnderElevation: 0,
               centerTitle: true,
               title: Text("Search", style: TextStyleManager.interBold14),
               leading: IconButton(

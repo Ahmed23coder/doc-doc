@@ -179,22 +179,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: const Color(0xFFF2F4F7),
           borderRadius: BorderRadius.circular(16),
         ),
-        child: Row(
-          children: [
-            // 1. My Appointment Button
-            _actionButton(size, "My Appointment", GrayColor.grey80, () {
-              // Navigation to Appointments Screen
 
-            }),
-
-            Container(width: 1, height: size.height * 0.04, color: GrayColor.grey60),
-
-            // 2. Medical Records Button
-            _actionButton(size, "Medical Records", GrayColor.grey80, () {
-              // Placeholder action
-            }),
-          ],
-        ),
       ),
     );
   }
