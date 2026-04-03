@@ -55,6 +55,7 @@ class _SignInScreenState extends State<SignInScreen> {
             }
           },
           builder: (context, state) {
+            final isLoading = state is AuthLoading;
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Padding(
@@ -147,25 +148,23 @@ class _SignInScreenState extends State<SignInScreen> {
 
                       /// LOGIN BUTTON
                       ButtonWidget(
-                        text: state is AuthLoading
-                            ? "Logging in..."
-                            : "Login",
-                        type: state is AuthLoading
+                        text: isLoading ? "Logging in..." : "Login",
+                        type: isLoading
                             ? ButtonType.disabled
                             : ButtonType.primary,
-                        onTap: state is AuthLoading
+                        onTap: isLoading
                             ? null
                             : () {
-                          if (_formKey.currentState!.validate()) {
-                            context.read<LoginBloc>().add(
-                              LoginButtonPressed(
-                                email: emailController.text.trim(),
-                                password:
-                                passwordController.text.trim(),
-                              ),
-                            );
-                          }
-                        },
+                                if (_formKey.currentState!.validate()) {
+                                  context.read<LoginBloc>().add(
+                                        LoginButtonPressed(
+                                          email: emailController.text.trim(),
+                                          password:
+                                              passwordController.text.trim(),
+                                        ),
+                                      );
+                                }
+                              },
                       ),
 
                       SizedBox(height: size.height * 0.06),
