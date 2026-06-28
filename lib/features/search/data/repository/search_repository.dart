@@ -41,7 +41,7 @@ class SearchRepository {
             .toList();
       }
       return [];
-    } on DioException catch (e) {
+    } on DioException {
       throw Exception("Failed to load specializations");
     }
   }

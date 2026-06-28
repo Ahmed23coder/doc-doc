@@ -303,7 +303,7 @@ class _RecommendationDoctorScreenState extends State<RecommendationDoctorScreen>
                                 final isSelected = _currentFilter.specializationId == spec.id;
 
                                 return _buildFilterChip(
-                                  label: spec.name ?? "Unknown",
+                                  label: spec.name,
                                   isSelected: isSelected,
                                   onTap: () {
                                     setSheetState(() {

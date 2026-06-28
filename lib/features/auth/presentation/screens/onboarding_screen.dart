@@ -54,7 +54,7 @@ class OnboardingScreen extends StatelessWidget {
 
                   colors: [
                     Colors.white,
-                    Colors.white.withOpacity(0.0),
+                    Colors.white.withValues(alpha: 0.0),
                   ],
                   // OPTIONAL: Adjust stops for a non-linear, smoother fall-off
                   stops: const [0.25,0.9],

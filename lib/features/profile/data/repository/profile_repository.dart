@@ -22,7 +22,6 @@ class ProfileRepository {
         EndPoints.updateProfile,
         data: body.toJson(),
       );
-;
       return UserProfileModel.fromJson(response.data);
     } on DioException catch (e) {
       final errorMessage = e.response?.data['message'] ?? e.message;

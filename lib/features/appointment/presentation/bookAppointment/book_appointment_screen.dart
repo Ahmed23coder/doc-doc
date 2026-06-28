@@ -263,7 +263,7 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: PrimaryColor.primary100.withOpacity(0.3),
+                      color: PrimaryColor.primary100.withValues(alpha: 0.3),
                       blurRadius: 6,
                       offset: const Offset(0, 3),
                     ),

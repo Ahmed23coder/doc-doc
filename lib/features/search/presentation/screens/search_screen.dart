@@ -296,7 +296,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 final isSelected = _currentFilter.specializationId == spec.id;
 
                                 return _buildFilterChip(
-                                  label: spec.name ?? "Unknown",
+                                  label: spec.name,
                                   isSelected: isSelected,
                                   onTap: () {
                                     setSheetState(() {

@@ -1,7 +1,6 @@
 import 'package:docdoc/core/layout/main_layout.dart';
 import 'package:docdoc/core/utils/colors_manager.dart';
 import 'package:docdoc/core/utils/text_style_manager.dart';
-import 'package:docdoc/features/home/presentation/screens/home_screen.dart';
 import 'package:docdoc/presentation/widgets/shared/button_widget.dart';
 import 'package:flutter/material.dart';
 

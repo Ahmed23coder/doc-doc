@@ -51,7 +51,7 @@ class DoctorsListWidget extends StatelessWidget {
                 color: GrayColor.grey20,
                 image: DecorationImage(
                   image: NetworkImage(
-                    doctor.photo ?? 'https://via.placeholder.com/150',
+                    doctor.photo.isNotEmpty ? doctor.photo : 'https://via.placeholder.com/150',
                   ),
                   fit: BoxFit.cover,
                   onError: (e, s) => const Icon(Icons.person, color: GrayColor.grey60),

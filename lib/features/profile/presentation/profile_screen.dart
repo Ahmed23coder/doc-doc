@@ -100,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(height: size.height * 0.03),
 
                         // Action Buttons (My Appointment / Medical Records)
-                        _buildActionButtons(size),
+
 
                         SizedBox(height: size.height * 0.04),
 
@@ -166,39 +166,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // ---------------------------------------------------
-  // WIDGET HELPERS
-  // ---------------------------------------------------
 
-  Widget _buildActionButtons(Size size) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-      child: Container(
-        height: size.height * 0.07,
-        decoration: BoxDecoration(
-          color: const Color(0xFFF2F4F7),
-          borderRadius: BorderRadius.circular(16),
-        ),
-
-      ),
-    );
-  }
-
-  // FIXED: Accepts VoidCallback for onTap
-  Widget _actionButton(Size size, String title, Color color, VoidCallback onTap) {
-    return Expanded(
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyleManager.interMedium14.copyWith(color: color),
-          ),
-        ),
-      ),
-    );
-  }
 
   Widget _buildMenuOptionsList(Size size) {
     return Padding(
@@ -260,7 +228,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         onPressed: () => _showLogoutDialog(context),
         style: TextButton.styleFrom(
           foregroundColor: Colors.redAccent,
-          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          backgroundColor: Colors.redAccent.withValues(alpha: 0.1),
           padding: const EdgeInsets.symmetric(vertical: 15),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
@@ -296,7 +264,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             const SizedBox(height: 32),
-            Divider(color: GrayColor.grey60.withOpacity(0.5), height: 1, thickness: 1),
+            Divider(color: GrayColor.grey60.withValues(alpha: 0.5), height: 1, thickness: 1),
             SizedBox(
               height: 60,
               child: Row(
@@ -307,7 +275,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: const Center(child: Text("Cancel", style: TextStyle(color: Colors.blue))),
                     ),
                   ),
-                  VerticalDivider(color: GrayColor.grey60.withOpacity(0.5), width: 1, thickness: 1),
+                  VerticalDivider(color: GrayColor.grey60.withValues(alpha: 0.5), width: 1, thickness: 1),
                   Expanded(
                     child: InkWell(
                       onTap: () {

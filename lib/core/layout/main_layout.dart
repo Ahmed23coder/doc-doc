@@ -46,7 +46,7 @@ class MainLayout extends StatelessWidget {
                   borderRadius: BorderRadius.circular(28),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.15),
+                      color: Colors.black.withValues(alpha: 0.15),
                       blurRadius: 12,
                       offset: const Offset(0, 5),
                     ),
@@ -65,7 +65,7 @@ class MainLayout extends StatelessWidget {
               color: Colors.white,
               surfaceTintColor: Colors.white,
               elevation: 15,
-              shadowColor: Colors.black.withOpacity(0.1),
+              shadowColor: Colors.black.withValues(alpha: 0.1),
 
               child: SizedBox(
                 height: 70,

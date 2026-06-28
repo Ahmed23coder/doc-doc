@@ -89,7 +89,7 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(8),
-                    color: Secondary.fillRed.withOpacity(0.1),
+                    color: Secondary.fillRed.withValues(alpha: 0.1),
                     child: Text(
                       "Failed to fetch recent appointments. Showing local data.",
                       style: TextStyleManager.interMedium12.copyWith(
@@ -158,7 +158,7 @@ class _MyAppointmentsScreenState extends State<MyAppointmentsScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              "No ${status} appointments",
+              "No $status appointments",
               style: TextStyleManager.interMedium14.copyWith(
                 color: GrayColor.grey60,
               ),
@@ -200,7 +200,7 @@ class AppointmentCard extends StatelessWidget {
         border: Border.all(color: GrayColor.grey30),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
