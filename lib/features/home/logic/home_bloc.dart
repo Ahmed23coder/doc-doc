@@ -6,9 +6,11 @@ import 'package:docdoc/core/services/secure_storage_service.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository _homeRepository;
-  final SecureStorageService _storageService = SecureStorageService();
+  final SecureStorageService _storageService;
 
-  HomeBloc(this._homeRepository) : super( HomeInitial()) {
+  HomeBloc(this._homeRepository, {SecureStorageService? storageService})
+      : _storageService = storageService ?? SecureStorageService(),
+        super( HomeInitial()) {
     on<FetchHomeDataEvent>(_onFetchHomeData);
   }
 
